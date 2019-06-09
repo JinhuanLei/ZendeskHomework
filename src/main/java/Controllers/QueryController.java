@@ -5,11 +5,26 @@ import Utils.KeyType;
 import Utils.ModelType;
 import Views.View;
 
+/*
+ *   The QueryController handles the requests for
+ *       1. Choose search options
+ *       2. choose model type.
+ *   This class will also check the correctness of keyboard input;
+ * */
 public class QueryController {
-    QueryService qs;
+    private QueryService qs;
+
     public QueryController(){
         qs = new QueryService();
     }
+
+    /*  Descriptions:
+     *      1. According to search options user chooses to perform corresponding actions.
+     *      2. Handle the Invalid input and response with a invalid input warning.
+     *
+     *  Input:
+     *      Enum Type of Search options
+     * */
     public void chooseSearchOptions(KeyType searchOptions) throws Exception {
         switch (searchOptions) {
             case QUIT:
@@ -32,6 +47,10 @@ public class QueryController {
         }
     }
 
+    /*  Descriptions:
+     *      1. According to model options user chooses to perform search functions for corresponding fields
+     *      2. Handle the Invalid input and response with a invalid input warning.
+     * */
     public void chooseModelType() throws Exception {
         View.modelOptionsView();
         ModelType modelType = InputUtil.getModelType();
@@ -54,10 +73,5 @@ public class QueryController {
                 qs.queryOrganization(term, value);
                 break;
         }
-    }
-
-
-    public String queryInit(ModelType modelType, String keyWord) {
-        return null;
     }
 }

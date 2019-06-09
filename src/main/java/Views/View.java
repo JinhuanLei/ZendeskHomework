@@ -3,11 +3,15 @@ package Views;
 import Utils.ModelType;
 
 public class View {
-    public final static String[] USER_TERM = {"_id", "url", "external_id", "name", "alias", "created_at", "active", "verified", "shared", "locale", "timezone"
+    private final static String[] USER_TERM = {"_id", "url", "external_id", "name", "alias", "created_at", "active", "verified", "shared", "locale", "timezone"
             , "last_login_at", "email", "phone", "signature", "organization_id", "tags", "suspended", "role"};
-    public final static String[] TICKET_TERM = {"_id", "url", "external_id", "created_at", "type", "subject", "description", "priority", "status", "submitter_id",
+    private final static String[] TICKET_TERM = {"_id", "url", "external_id", "created_at", "type", "subject", "description", "priority", "status", "submitter_id",
             "assignee_id", "organization_id", "tags", "has_incidents", "due_at", "via"};
-    public final static String[] ORGANIZATION_TERM = {"_id", "url", "external_id", "name", "domain_names", "created_at", "details", "shared_tickets", "tags"};
+    private final static String[] ORGANIZATION_TERM = {"_id", "url", "external_id", "name", "domain_names", "created_at", "details", "shared_tickets", "tags"};
+
+    /*
+     *   GUI for search options
+     * */
     public static void searchOptionsView() {
         System.out.println("-------------------------------------------------------------------");
         System.out.println("Welcome to Zendesk Search");
@@ -18,6 +22,10 @@ public class View {
         System.out.println("    * Type 'quit' to exit");
     }
 
+    /*
+     *   Input : enum of ModelType
+     *   Output: return the String[] according to enum ModelType
+     * */
     public static String[] getTermArr(ModelType modelType){
         switch(modelType){
             case USER:
@@ -30,6 +38,9 @@ public class View {
         return null;
     }
 
+    /*
+     *   GUI for choosing model options
+     * */
     public static void modelOptionsView() {
         System.out.println("Select Search Options:");
         System.out.println("  * Press 1 to search User");
@@ -37,7 +48,9 @@ public class View {
         System.out.println("  * Press 3 to search Organization");
     }
 
-
+    /*
+     *   GUI for help manual
+     * */
     public static void modelViewHelpManual() {
         System.out.println("-------------------------------------------------------------------");
         System.out.println("Search Users with:");

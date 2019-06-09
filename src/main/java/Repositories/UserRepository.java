@@ -11,14 +11,15 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
-
+/*
+ *   The UserRepository can communicating with the User database
+ * */
 public class UserRepository {
-    List<User> userList;
+    private List<User> userList;
     public UserRepository(){
         init();
     }
-    public void init() {
-//        System.out.println("Path: "+ getClass().getResource("/users.json").getPath());
+    private void init() {
         InputStream inputStream = this.getClass().getResourceAsStream("users.json");
         InputStreamReader reader = new InputStreamReader(inputStream);
         Gson gson = new Gson();
@@ -31,7 +32,14 @@ public class UserRepository {
             e.printStackTrace();
         }
     }
-
+    /*
+     *   Query the user by providing its attributes and value.
+     *   Input:
+     *       term : attributes of users
+     *       value : the value of the term we care of users
+     *   Output:
+     *       List<User> : All the result will be put in a List
+     * */
     public List<User> queryThings(String term, String value) throws Exception {
         List<User> result = new ArrayList<>();
         for (User o : userList) {
@@ -45,7 +53,10 @@ public class UserRepository {
         return result;
     }
 
-    public static void main(String args[]) throws IOException {
+    /*
+     *  Test Method
+     * */
+    public static void main(String args[]) {
         UserRepository ur = new UserRepository();
         System.out.println(ur.userList.get(0));
     }

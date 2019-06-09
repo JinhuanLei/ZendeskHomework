@@ -1,16 +1,15 @@
 package Services;
 
-import Models.Organization;
 import Repositories.OrganizationRepository;
 import Repositories.TicketRepository;
 import Repositories.UserRepository;
-
-import java.util.List;
-
+/*
+ *   The QueryService handles the query requests from Controller and responsible for communicating with repositories
+ * */
 public class QueryService {
-    OrganizationRepository qr;
-    TicketRepository tr;
-    UserRepository ur;
+    private OrganizationRepository qr;
+    private TicketRepository tr;
+    private UserRepository ur;
     public QueryService(){
         qr  = new OrganizationRepository();
         tr = new TicketRepository();

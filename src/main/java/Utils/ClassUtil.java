@@ -7,14 +7,27 @@ import Models.User;
 import java.lang.reflect.Field;
 import java.util.List;
 
+/*
+ *  Using the technique of reflecting to mapping user input to the attribute of data model.
+ * */
 public class ClassUtil {
+
+    /*
+     *   Descriptions:
+     *       1. Go through every field of target class and traverse every attribute name and attribute value.
+     *       2. find the attribute and distinguish if it meet the requirement of user
+     *       3. If we found the answer, add this object into the result List
+     *    Input:
+     *       term : name of field user provides
+     *       value : value of the field user provides
+     *       result : the List<Organization> for store the query result
+     *       object : the Organization object we current processing
+     * */
     public static void reflectingOrganization(String term, String value, List<Organization> result, Object object) throws Exception {
         Field[] fields = object.getClass().getDeclaredFields();
         for (Field field : fields) {
             String name = field.getName();
             field.setAccessible(true);
-//            System.out.println("Param Name：" + name);
-//            System.out.println("Param Value：" + field.get(object));
             if (name.equals(term)) {
                 if (field.getType().equals(boolean.class)) {
                     if ((value.equals("false") && false == (boolean) field.get(object)) || (value.equals("true") && true == (boolean) field.get(object))) {
@@ -39,13 +52,22 @@ public class ClassUtil {
 
     }
 
+    /*
+     *   Descriptions:
+     *       1. Go through every field of target class and traverse every attribute name and attribute value.
+     *       2. find the attribute and distinguish if it meet the requirement of user
+     *       3. If we found the answer, add this object into the result List
+     *    Input:
+     *       term : name of field user provides
+     *       value : value of the field user provides
+     *       result : the List<Ticket> for store the query result
+     *       object : the Ticket object we current processing
+     * */
     public static void reflectingTicket(String term, String value, List<Ticket> result, Object object) throws Exception {
         Field[] fields = object.getClass().getDeclaredFields();
         for (Field field : fields) {
             String name = field.getName();
             field.setAccessible(true);
-//            System.out.println("Param Name：" + name);
-//            System.out.println("Param Value：" + field.get(object));
             if (name.equals(term)) {
                 if (field.getType().equals(boolean.class)) {
                     if ((value.equals("false") && false == (boolean) field.get(object)) || (value.equals("true") && true == (boolean) field.get(object))) {
@@ -69,13 +91,22 @@ public class ClassUtil {
         }
     }
 
+    /*
+     *   Descriptions:
+     *       1. Go through every field of target class and traverse every attribute name and attribute value.
+     *       2. find the attribute and distinguish if it meet the requirement of user
+     *       3. If we found the answer, add this object into the result List
+     *    Input:
+     *       term : name of field user provides
+     *       value : value of the field user provides
+     *       result : the List<User> for store the query result
+     *       object : the User object we current processing
+     * */
     public static void reflectingUser(String term, String value, List<User> result, Object object) throws Exception {
         Field[] fields = object.getClass().getDeclaredFields();
         for (Field field : fields) {
             String name = field.getName();
             field.setAccessible(true);
-//            System.out.println("Param Name：" + name);
-//            System.out.println("Param Value：" + field.get(object));
             if (name.equals(term)) {
                 if (field.getType().equals(boolean.class)) {
                     if ((value.equals("false") && false == (boolean) field.get(object)) || (value.equals("true") && true == (boolean) field.get(object))) {

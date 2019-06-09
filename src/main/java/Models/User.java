@@ -1,7 +1,9 @@
 package Models;
 
 import java.util.List;
-
+/*
+ *   The User is a model built for transfer from Json Object to Java Object.
+ * */
 public class User {
     private int _id;
     private String url;
