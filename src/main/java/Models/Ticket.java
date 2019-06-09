@@ -11,7 +11,7 @@ public class Ticket {
     private String subject;
     private String description;
     private String priority;
-    private String pending;
+    private String status;
     private int submitter_id;
     private int assignee_id;
     private int organization_id;
@@ -84,13 +84,6 @@ public class Ticket {
         this.priority = priority;
     }
 
-    public String getPending() {
-        return pending;
-    }
-
-    public void setPending(String pending) {
-        this.pending = pending;
-    }
 
     public int getSubmitter_id() {
         return submitter_id;
@@ -160,7 +153,7 @@ public class Ticket {
                 " subject : " + subject + '\n' +
                 " description : " + description + '\n' +
                 " priority : " + priority + '\n' +
-                " pending : " + pending + '\n' +
+                " status : " + status + '\n' +
                 " submitter_id : " + submitter_id + '\n' +
                 " assignee_id : " + assignee_id + '\n' +
                 " organization_id : " + organization_id + '\n' +

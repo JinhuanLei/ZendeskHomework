@@ -6,6 +6,7 @@ import Utils.InputUtil;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
@@ -19,11 +20,18 @@ public class OrganizationRepository {
     }
 
     public void init() {
-        InputStream inputStream = this.getClass().getResourceAsStream("/organizations.json");
+        System.out.println(this.getClass().getResource("").getPath());
+        InputStream inputStream = this.getClass().getResourceAsStream("./organizations.json");
         InputStreamReader reader = new InputStreamReader(inputStream);
         Gson gson = new Gson();
         organizationList = gson.fromJson(reader, new TypeToken<List<Organization>>() {
         }.getType());
+        try {
+            inputStream.close();
+            reader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public List<Organization> queryThings(String term, String value) throws Exception {
@@ -41,7 +49,8 @@ public class OrganizationRepository {
 
     public static void main(String args[]) throws Exception {
         OrganizationRepository o = new OrganizationRepository();
-        o.queryThings("created_at", "2016-07-23T09:48:02 -10:00");
+        System.out.println(o.organizationList.get(0));
+//        o.queryThings("created_at", "2016-07-23T09:48:02 -10:00");
     }
 
 

@@ -5,7 +5,7 @@ import Utils.ModelType;
 public class View {
     public final static String[] USER_TERM = {"_id", "url", "external_id", "name", "alias", "created_at", "active", "verified", "shared", "locale", "timezone"
             , "last_login_at", "email", "phone", "signature", "organization_id", "tags", "suspended", "role"};
-    public final static String[] TICKET_TERM = {"_id", "url", "external_id", "created_at", "type", "subject", "description", "priority", "pending", "submitter_id",
+    public final static String[] TICKET_TERM = {"_id", "url", "external_id", "created_at", "type", "subject", "description", "priority", "status", "submitter_id",
             "assignee_id", "organization_id", "tags", "has_incidents", "due_at", "via"};
     public final static String[] ORGANIZATION_TERM = {"_id", "url", "external_id", "name", "domain_names", "created_at", "details", "shared_tickets", "tags"};
     public static void searchOptionsView() {

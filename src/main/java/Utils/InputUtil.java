@@ -59,7 +59,11 @@ public class InputUtil {
     public static String getSearchValue(){
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter Search Value: ");
-        return sc.nextLine();
+        String result = sc.nextLine();
+        if(result == null){
+            return "";
+        }
+        return result;
     }
 
     public static void getEnterKey() {
