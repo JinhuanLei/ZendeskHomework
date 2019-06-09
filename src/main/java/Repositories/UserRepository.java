@@ -19,7 +19,7 @@ public class UserRepository {
     }
     public void init() {
 //        System.out.println("Path: "+ getClass().getResource("/users.json").getPath());
-        InputStream inputStream = this.getClass().getResourceAsStream("./users.json");
+        InputStream inputStream = this.getClass().getResourceAsStream("users.json");
         InputStreamReader reader = new InputStreamReader(inputStream);
         Gson gson = new Gson();
         userList = gson.fromJson(reader, new TypeToken<List<User>>() {

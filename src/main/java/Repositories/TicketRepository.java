@@ -18,7 +18,7 @@ public class TicketRepository {
         init();
     }
     public void init() {
-        InputStream inputStream = this.getClass().getResourceAsStream("./tickets.json");
+        InputStream inputStream = this.getClass().getResourceAsStream("tickets.json");
         InputStreamReader reader = new InputStreamReader(inputStream);
         Gson gson = new Gson();
         ticketList = gson.fromJson(reader, new TypeToken<List<Ticket>>() {

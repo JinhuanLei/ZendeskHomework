@@ -20,8 +20,8 @@ public class OrganizationRepository {
     }
 
     public void init() {
-        System.out.println(this.getClass().getResource("").getPath());
-        InputStream inputStream = this.getClass().getResourceAsStream("./organizations.json");
+//        System.out.println(this.getClass().getResource("./organizations.json").getPath());
+        InputStream inputStream = this.getClass().getResourceAsStream("organizations.json");
         InputStreamReader reader = new InputStreamReader(inputStream);
         Gson gson = new Gson();
         organizationList = gson.fromJson(reader, new TypeToken<List<Organization>>() {

@@ -67,11 +67,11 @@ public class InputUtil {
     }
 
     public static void getEnterKey() {
-        System.out.println("Type 'Enter' to continue:");
+        System.out.println("Press  'Enter' to continue:");
         Scanner sc = new Scanner(System.in);
         String key = sc.nextLine();
         while (key.length() != 0) {
-            System.out.println("Type 'Enter' to continue:");
+            System.out.println("Press  'Enter' to continue:");
             key = sc.nextLine();
         }
         return;
