@@ -15,9 +15,12 @@ import java.util.List;
  * */
 public class OrganizationRepository {
     private List<Organization> organizationList;
-
+    private InputUtil iu;
+    private ClassUtil cu;
     public OrganizationRepository() {
         init();
+        iu = new InputUtil();
+        cu = new ClassUtil();
     }
     /*
     *   init the data structures and loading data from .json file to a List<Organization>
@@ -46,13 +49,13 @@ public class OrganizationRepository {
     public List<Organization> queryThings(String term, String value) throws Exception {
         List<Organization> result = new ArrayList<>();
         for (Organization o : organizationList) {
-            ClassUtil.reflectingOrganization(term, value, result, o);
+            cu.reflectingOrganization(term, value, result, o);
         }
         for (Organization o : result) {
             System.out.println(o);
         }
         System.out.println("Total " + result.size() + " Item Found");
-        InputUtil.getEnterKey();
+        iu.getEnterKey();
         return result;
     }
 

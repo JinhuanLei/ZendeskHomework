@@ -9,10 +9,11 @@ public class Main {
      * */
     public static void main(String args[]) throws Exception {
         QueryController qc = new QueryController();
+        InputUtil iu = new InputUtil();
         KeyType searchOptions = null;
         while (searchOptions != KeyType.QUIT) {
             View.searchOptionsView();
-            searchOptions = InputUtil.getSearchOptions();
+            searchOptions = iu.getSearchOptions();
             qc.chooseSearchOptions(searchOptions);
         }
     }

@@ -16,8 +16,12 @@ import java.util.List;
  * */
 public class TicketRepository {
     private List<Ticket> ticketList;
+    private InputUtil iu;
+    private ClassUtil cu;
     public TicketRepository(){
         init();
+        iu = new InputUtil();
+        cu = new ClassUtil();
     }
 
     /*
@@ -47,13 +51,13 @@ public class TicketRepository {
     public List<Ticket> queryThings(String term, String value) throws Exception {
         List<Ticket> result = new ArrayList<>();
         for (Ticket o : ticketList) {
-            ClassUtil.reflectingTicket(term, value, result, o);
+            cu.reflectingTicket(term, value, result, o);
         }
         for (Ticket o : result) {
             System.out.println(o);
         }
         System.out.println("Total " + result.size() + " Item Found");
-        InputUtil.getEnterKey();
+        iu.getEnterKey();
         return result;
     }
 

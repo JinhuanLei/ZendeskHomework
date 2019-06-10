@@ -13,7 +13,7 @@ public class InputUtil {
      *   Output:
      *      KeyType : Enum class for search options
      * */
-    public static KeyType getSearchOptions() {
+    public KeyType getSearchOptions() {
         Scanner sc = new Scanner(System.in);
         String searchOptions = sc.nextLine();
         if (searchOptions.length() == 1) {
@@ -37,7 +37,7 @@ public class InputUtil {
      *   Output:
      *      ModelType : Enum class for model types
      * */
-    public static ModelType getModelType() {
+    public ModelType getModelType() {
         Scanner sc = new Scanner(System.in);
         String modelOptions = sc.nextLine();
         if (modelOptions.length() == 1) {
@@ -58,7 +58,7 @@ public class InputUtil {
      *   Output:
       *     Enum class for model types
      * */
-    public static String getSearchTerm(ModelType modelType){
+    public String getSearchTerm(ModelType modelType){
         String[] target = View.getTermArr(modelType);
         Scanner sc = new Scanner(System.in);
         while(true){
@@ -79,7 +79,7 @@ public class InputUtil {
      *   Output:
      *     String for input value
      * */
-    public static String getSearchValue(){
+    public String getSearchValue(){
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter Search Value: ");
         String result = sc.nextLine();
@@ -92,7 +92,7 @@ public class InputUtil {
     /*
      *   Takes input of 'Enter' key from keyboard.
      * */
-    public static void getEnterKey() {
+    public void getEnterKey() {
         System.out.println("Press  'Enter' to continue:");
         Scanner sc = new Scanner(System.in);
         String key = sc.nextLine();

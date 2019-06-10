@@ -13,9 +13,10 @@ import Views.View;
  * */
 public class QueryController {
     private QueryService qs;
-
+    private InputUtil iu;
     public QueryController(){
         qs = new QueryService();
+        iu = new InputUtil();
     }
 
     /*  Descriptions:
@@ -36,11 +37,11 @@ public class QueryController {
                 break;
             case HELP:
                 View.modelViewHelpManual();
-                InputUtil.getEnterKey();
+                iu.getEnterKey();
                 break;
             case INVALID:
                 System.out.println("Invalid Input!");
-                InputUtil.getEnterKey();
+                iu.getEnterKey();
                 break;
             default:
                 System.out.println("Unknown Input!");
@@ -53,15 +54,15 @@ public class QueryController {
      * */
     public void chooseModelType() throws Exception {
         View.modelOptionsView();
-        ModelType modelType = InputUtil.getModelType();
+        ModelType modelType = iu.getModelType();
         if(modelType == ModelType.INVALID){
             System.out.println("Invalid Input!");
-            InputUtil.getEnterKey();
+            iu.getEnterKey();
             chooseModelType();
             return;
         }
-        String term = InputUtil.getSearchTerm(modelType);
-        String value = InputUtil.getSearchValue();
+        String term = iu.getSearchTerm(modelType);
+        String value = iu.getSearchValue();
         switch (modelType){
             case USER:
                 qs.queryUser(term, value);

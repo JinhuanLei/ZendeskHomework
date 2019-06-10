@@ -16,8 +16,12 @@ import java.util.List;
  * */
 public class UserRepository {
     private List<User> userList;
+    private InputUtil iu;
+    private ClassUtil cu;
     public UserRepository(){
         init();
+        iu = new InputUtil();
+        cu = new ClassUtil();
     }
     private void init() {
         InputStream inputStream = this.getClass().getResourceAsStream("users.json");
@@ -43,13 +47,13 @@ public class UserRepository {
     public List<User> queryThings(String term, String value) throws Exception {
         List<User> result = new ArrayList<>();
         for (User o : userList) {
-            ClassUtil.reflectingUser(term, value, result, o);
+            cu.reflectingUser(term, value, result, o);
         }
         for (User o : result) {
             System.out.println(o);
         }
         System.out.println("Total " + result.size() + " Item Found");
-        InputUtil.getEnterKey();
+        iu.getEnterKey();
         return result;
     }
 

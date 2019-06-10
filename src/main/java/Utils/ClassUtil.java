@@ -23,7 +23,7 @@ public class ClassUtil {
      *       result : the List<Organization> for store the query result
      *       object : the Organization object we current processing
      * */
-    public static void reflectingOrganization(String term, String value, List<Organization> result, Object object) throws Exception {
+    public void reflectingOrganization(String term, String value, List<Organization> result, Object object) throws Exception {
         Field[] fields = object.getClass().getDeclaredFields();
         for (Field field : fields) {
             String name = field.getName();
@@ -63,7 +63,7 @@ public class ClassUtil {
      *       result : the List<Ticket> for store the query result
      *       object : the Ticket object we current processing
      * */
-    public static void reflectingTicket(String term, String value, List<Ticket> result, Object object) throws Exception {
+    public void reflectingTicket(String term, String value, List<Ticket> result, Object object) throws Exception {
         Field[] fields = object.getClass().getDeclaredFields();
         for (Field field : fields) {
             String name = field.getName();
@@ -102,7 +102,7 @@ public class ClassUtil {
      *       result : the List<User> for store the query result
      *       object : the User object we current processing
      * */
-    public static void reflectingUser(String term, String value, List<User> result, Object object) throws Exception {
+    public void reflectingUser(String term, String value, List<User> result, Object object) throws Exception {
         Field[] fields = object.getClass().getDeclaredFields();
         for (Field field : fields) {
             String name = field.getName();
