@@ -59,6 +59,9 @@ public class InputUtil {
       *     Enum class for model types
      * */
     public String getSearchTerm(ModelType modelType){
+        if(modelType == null){
+            return "";
+        }
         String[] target = View.getTermArr(modelType);
         Scanner sc = new Scanner(System.in);
         while(true){

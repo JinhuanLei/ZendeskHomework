@@ -108,6 +108,27 @@ public class ClassUtilTest {
     }
 
     @Test
+    public void testReflectingOrganizationWithEmptyResult2() {
+        List<Organization> result = new ArrayList<>();
+        try {
+            cu.reflectingOrganization("_id", "101", result, null);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void testReflectingOrganizationWithEmptyResult3() {
+        List<Organization> result = new ArrayList<>();
+        List<Organization> data = or.getOrganizationList();
+        try {
+            cu.reflectingOrganization("_id", "101", null, data.get(0));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
     public void testGetReflectingTicketWithSingleResult1() {
         List<Ticket> result = new ArrayList<>();
         List<Ticket> data = tr.getTicketList();
@@ -163,6 +184,26 @@ public class ClassUtilTest {
     }
 
     @Test
+    public void testGetReflectingTicketWithEmptyResult2() {
+        List<Ticket> result = new ArrayList<>();
+        try {
+            cu.reflectingTicket("description", "Nostrud", result, null);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void testGetReflectingTicketWithEmptyResult3() {
+        List<Ticket> result = new ArrayList<>();
+        try {
+            cu.reflectingTicket("description", "Nostrud", null, null);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
     public void testReflectingUserWithSingleResult1() {
         List<User> result = new ArrayList<>();
         List<User> data = ur.getUserList();
@@ -202,5 +243,25 @@ public class ClassUtilTest {
             }
         }
         Assert.assertEquals(0, result.size());
+    }
+
+    @Test
+    public void testReflectingUserWithEmptyResult2() {
+        List<User> result = new ArrayList<>();
+        try {
+            cu.reflectingUser("_id", "0", result, null);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void testReflectingUserWithEmptyResult3() {
+        List<User> result = new ArrayList<>();
+        try {
+            cu.reflectingUser("_id", "0", null, null);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

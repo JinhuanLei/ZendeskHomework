@@ -24,6 +24,9 @@ public class ClassUtil {
      *       object : the Organization object we current processing
      * */
     public void reflectingOrganization(String term, String value, List<Organization> result, Object object) throws Exception {
+        if (object == null || result == null) {
+            return;
+        }
         Field[] fields = object.getClass().getDeclaredFields();
         for (Field field : fields) {
             String name = field.getName();
@@ -64,6 +67,9 @@ public class ClassUtil {
      *       object : the Ticket object we current processing
      * */
     public void reflectingTicket(String term, String value, List<Ticket> result, Object object) throws Exception {
+        if (object == null || result == null) {
+            return;
+        }
         Field[] fields = object.getClass().getDeclaredFields();
         for (Field field : fields) {
             String name = field.getName();
@@ -103,6 +109,9 @@ public class ClassUtil {
      *       object : the User object we current processing
      * */
     public void reflectingUser(String term, String value, List<User> result, Object object) throws Exception {
+        if (object == null || result == null) {
+            return;
+        }
         Field[] fields = object.getClass().getDeclaredFields();
         for (Field field : fields) {
             String name = field.getName();

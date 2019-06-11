@@ -170,6 +170,20 @@ public class InputUtilTest {
         Assert.assertNotNull(input);
     }
 
+    @Test(timeout = 200)
+    public void testGetSearchTermWithInValidInput() {
+        String input;
+        InputStream stdin = System.in;
+        try {
+            String data = "_id\n";
+            System.setIn(new ByteArrayInputStream(data.getBytes()));
+            input = iu.getSearchTerm(null);
+        } finally {
+            System.setIn(stdin);
+        }
+        Assert.assertEquals("", input);
+    }
+
     @Test
     public void testGetSearchValue() {
         InputStream stdin = System.in;

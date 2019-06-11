@@ -19,50 +19,14 @@ public class QueryController {
         iu = new InputUtil();
     }
 
-    /*  Descriptions:
-     *      1. According to search options user chooses to perform corresponding actions.
-     *      2. Handle the Invalid input and response with a invalid input warning.
-     *
-     *  Input:
-     *      Enum Type of Search options
-     * */
-    public void chooseSearchOptions(KeyType searchOptions) throws Exception {
-        switch (searchOptions) {
-            case QUIT:
-                System.out.println("Thank you!");
-                System.out.println("Quit!");
-                break;
-            case SEARCH:
-                chooseModelType();
-                break;
-            case HELP:
-                View.modelViewHelpManual();
-                iu.getEnterKey();
-                break;
-            case INVALID:
-                System.out.println("Invalid Input!");
-                iu.getEnterKey();
-                break;
-            default:
-                System.out.println("Unknown Input!");
-        }
-    }
+
+
 
     /*  Descriptions:
      *      1. According to model options user chooses to perform search functions for corresponding fields
      *      2. Handle the Invalid input and response with a invalid input warning.
      * */
-    public void chooseModelType() throws Exception {
-        View.modelOptionsView();
-        ModelType modelType = iu.getModelType();
-        if(modelType == ModelType.INVALID){
-            System.out.println("Invalid Input!");
-            iu.getEnterKey();
-            chooseModelType();
-            return;
-        }
-        String term = iu.getSearchTerm(modelType);
-        String value = iu.getSearchValue();
+    public void queryThings(ModelType modelType, String term, String value) throws Exception {
         switch (modelType){
             case USER:
                 qs.queryUser(term, value);
