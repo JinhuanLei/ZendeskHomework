@@ -61,6 +61,10 @@ public class TicketRepository {
         return result;
     }
 
+    public List<Ticket> getTicketList() {
+        return ticketList;
+    }
+
     /*
      *  Test Method
      * */

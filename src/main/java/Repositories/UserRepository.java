@@ -57,6 +57,10 @@ public class UserRepository {
         return result;
     }
 
+    public List<User> getUserList() {
+        return userList;
+    }
+
     /*
      *  Test Method
      * */

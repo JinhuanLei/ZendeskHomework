@@ -5,6 +5,7 @@ import Utils.ClassUtil;
 import Utils.InputUtil;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -67,7 +68,9 @@ public class OrganizationRepository {
         System.out.println(o.organizationList.get(0));
     }
 
-
+    public List<Organization> getOrganizationList() {
+        return organizationList;
+    }
 }
 
 

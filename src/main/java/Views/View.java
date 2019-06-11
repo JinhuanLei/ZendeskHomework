@@ -9,6 +9,18 @@ public class View {
             "assignee_id", "organization_id", "tags", "has_incidents", "due_at", "via"};
     private final static String[] ORGANIZATION_TERM = {"_id", "url", "external_id", "name", "domain_names", "created_at", "details", "shared_tickets", "tags"};
 
+    public static String[] getUserTerm() {
+        return USER_TERM;
+    }
+
+    public static String[] getTicketTerm() {
+        return TICKET_TERM;
+    }
+
+    public static String[] getOrganizationTerm() {
+        return ORGANIZATION_TERM;
+    }
+
     /*
      *   GUI for search options
      * */
