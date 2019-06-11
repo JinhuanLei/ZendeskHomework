@@ -26,8 +26,15 @@ public class OrganizationRepository {
     *   init the data structures and loading data from .json file to a List<Organization>
     * */
     private void init() {
-        InputStream inputStream = this.getClass().getResourceAsStream("organizations.json");
-        InputStreamReader reader = new InputStreamReader(inputStream);
+        InputStream inputStream;
+        InputStreamReader reader;
+        try {
+            inputStream = this.getClass().getResourceAsStream("organizations.json");
+            reader = new InputStreamReader(inputStream);
+        } catch (Exception e) {
+            System.out.println("File Not Found");
+            return;
+        }
         Gson gson = new Gson();
         organizationList = gson.fromJson(reader, new TypeToken<List<Organization>>() {
         }.getType());

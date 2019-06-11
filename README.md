@@ -1,6 +1,11 @@
 ﻿# ZenDesk Homework
 ## Run the Application
-I attached **.jar** file, so that user can use computer with Java environment and use command below to excute.
+The computer need to install Java 8 environment to run this application. If not, the user can follow the instructions of the link below to install the Java 8 Environment.
+```
+https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
+```
+
+User can use command below to excute.
 ```
 java -jar (with path)/ZendeskHomework.jar
 ```

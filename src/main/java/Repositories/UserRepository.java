@@ -23,8 +23,15 @@ public class UserRepository {
         cu = new ClassUtil();
     }
     private void init() {
-        InputStream inputStream = this.getClass().getResourceAsStream("users.json");
-        InputStreamReader reader = new InputStreamReader(inputStream);
+        InputStream inputStream;
+        InputStreamReader reader;
+        try {
+            inputStream = this.getClass().getResourceAsStream("users.json");
+            reader = new InputStreamReader(inputStream);
+        } catch (Exception e) {
+            System.out.println("File Not Found");
+            return;
+        }
         Gson gson = new Gson();
         userList = gson.fromJson(reader, new TypeToken<List<User>>() {
         }.getType());

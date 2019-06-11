@@ -27,8 +27,15 @@ public class TicketRepository {
      *   init the data structures and loading data from .json file to a List<Ticket>
      * */
     private void init() {
-        InputStream inputStream = this.getClass().getResourceAsStream("tickets.json");
-        InputStreamReader reader = new InputStreamReader(inputStream);
+        InputStream inputStream;
+        InputStreamReader reader;
+        try {
+            inputStream = this.getClass().getResourceAsStream("tickets.json");
+            reader = new InputStreamReader(inputStream);
+        } catch (Exception e) {
+            System.out.println("File Not Found");
+            return;
+        }
         Gson gson = new Gson();
         ticketList = gson.fromJson(reader, new TypeToken<List<Ticket>>() {
         }.getType());
