@@ -48,8 +48,7 @@ public class TicketRepository {
      *   Output:
      *       List<Ticket> : All the result will be put in a List
      * */
-    public List<Ticket> queryThings(String term, String value) throws Exception {
-        List<Ticket> result = new ArrayList<>();
+    public List<Ticket> queryThings(List<Ticket> result, String term, String value) throws Exception {
         for (Ticket o : ticketList) {
             cu.reflectingTicket(term, value, result, o);
         }

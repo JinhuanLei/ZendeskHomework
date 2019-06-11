@@ -44,8 +44,7 @@ public class UserRepository {
      *   Output:
      *       List<User> : All the result will be put in a List
      * */
-    public List<User> queryThings(String term, String value) throws Exception {
-        List<User> result = new ArrayList<>();
+    public List<User> queryThings(List<User> result, String term, String value) throws Exception {
         for (User o : userList) {
             cu.reflectingUser(term, value, result, o);
         }

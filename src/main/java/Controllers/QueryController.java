@@ -1,9 +1,14 @@
 package Controllers;
+
+import Models.Organization;
+import Models.Ticket;
+import Models.User;
 import Services.QueryService;
 import Utils.InputUtil;
-import Utils.KeyType;
 import Utils.ModelType;
-import Views.View;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /*
  *   The QueryController handles the requests for
@@ -19,23 +24,26 @@ public class QueryController {
         iu = new InputUtil();
     }
 
-
-
-
     /*  Descriptions:
      *      1. According to model options user chooses to perform search functions for corresponding fields
      *      2. Handle the Invalid input and response with a invalid input warning.
      * */
     public void queryThings(ModelType modelType, String term, String value) throws Exception {
+        if(modelType == null){
+            return;
+        }
         switch (modelType){
             case USER:
-                qs.queryUser(term, value);
+                List<User> users = new ArrayList<>();
+                qs.queryUser(users, term, value);
                 break;
             case TICKET:
-                qs.queryTicket(term, value);
+                List<Ticket> tickets = new ArrayList<>();
+                qs.queryTicket(tickets, term, value);
                 break;
             case ORGANIZATION:
-                qs.queryOrganization(term, value);
+                List<Organization> organizations = new ArrayList<>();
+                qs.queryOrganization(organizations, term, value);
                 break;
         }
     }

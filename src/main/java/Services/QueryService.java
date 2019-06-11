@@ -1,8 +1,14 @@
 package Services;
 
+import Models.Organization;
+import Models.Ticket;
+import Models.User;
 import Repositories.OrganizationRepository;
 import Repositories.TicketRepository;
 import Repositories.UserRepository;
+
+import java.util.List;
+
 /*
  *   The QueryService handles the query requests from Controller and responsible for communicating with repositories
  * */
@@ -15,15 +21,15 @@ public class QueryService {
         tr = new TicketRepository();
         ur = new UserRepository();
     }
-    public void queryOrganization(String term, String value) throws Exception {
-        qr.queryThings(term, value);
+    public void queryOrganization(List<Organization> result, String term, String value) throws Exception {
+        qr.queryThings(result, term, value);
     }
 
-    public void queryTicket(String term, String value) throws Exception {
-        tr.queryThings(term, value);
+    public void queryTicket(List<Ticket> result, String term, String value) throws Exception {
+        tr.queryThings(result, term, value);
     }
 
-    public void queryUser(String term, String value) throws Exception {
-        ur.queryThings(term, value);
+    public void queryUser(List<User> result, String term, String value) throws Exception {
+        ur.queryThings(result, term, value);
     }
 }

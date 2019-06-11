@@ -47,8 +47,8 @@ public class OrganizationRepository {
     *   Output:
     *       List<Organization> : All the result will be put in a List
     * */
-    public List<Organization> queryThings(String term, String value) throws Exception {
-        List<Organization> result = new ArrayList<>();
+    public List<Organization> queryThings(List<Organization> result, String term, String value) throws Exception {
+
         for (Organization o : organizationList) {
             cu.reflectingOrganization(term, value, result, o);
         }
