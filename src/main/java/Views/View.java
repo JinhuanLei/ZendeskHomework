@@ -27,7 +27,7 @@ public class View {
     public static void searchOptionsView() {
         System.out.println("-------------------------------------------------------------------");
         System.out.println("Welcome to Zendesk Search");
-        System.out.println("Type 'quit' to exit at any time, Press 'Enter' to continue");
+        System.out.println("Type 'quit' to exit, Press 'Enter' to continue or confirm typing");
         System.out.println("Select search options:");
         System.out.println("    * Press 1 to search Zendesk");
         System.out.println("    * Press 2 to View a list of searchable fields");

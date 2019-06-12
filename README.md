@@ -5,7 +5,7 @@ The computer need to install Java 8 environment to run this application. If not,
 https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
 ```
 
-User can use command below to excute.
+User can use command below to execute.
 ```
 java -jar (with path)/ZendeskHomework.jar
 ```
@@ -15,7 +15,7 @@ java -jar (with path)/ZendeskHomework.jar
 
 2. Search result might have multiple value, because some of research fields is not unique.
 
-3. If the type of search term is **boolean**, User need to type **true** or **false** for matching.
+3. If the type of search term is **boolean**, User need to type **true** or **false** for matching the searching results..
 
 4. If the type of search term is **Date** type, In this problem I treat this like a String. So user needs to type exactly the same String to meet the search requirement.
 
