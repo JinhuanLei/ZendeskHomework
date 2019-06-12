@@ -170,6 +170,20 @@ public class ClassUtilTest {
     }
 
     @Test
+    public void testGetReflectingTicketWithMultipleResult2() {
+        List<Ticket> result = new ArrayList<>();
+        List<Ticket> data = tr.getTicketList();
+        for (Ticket t : data) {
+            try {
+                cu.reflectingTicket("tags", "Ohio", result, t);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        Assert.assertNotEquals(0, result.size());
+    }
+
+    @Test
     public void testGetReflectingTicketWithEmptyResult1() {
         List<Ticket> result = new ArrayList<>();
         List<Ticket> data = tr.getTicketList();
@@ -186,21 +200,43 @@ public class ClassUtilTest {
     @Test
     public void testGetReflectingTicketWithEmptyResult2() {
         List<Ticket> result = new ArrayList<>();
-        try {
-            cu.reflectingTicket("description", "Nostrud", result, null);
-        } catch (Exception e) {
-            e.printStackTrace();
+        List<Ticket> data = tr.getTicketList();
+        for (Ticket t : data) {
+            try {
+                cu.reflectingTicket("description", "Nostrud", result, null);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
+        Assert.assertEquals(0, result.size());
     }
 
     @Test
     public void testGetReflectingTicketWithEmptyResult3() {
         List<Ticket> result = new ArrayList<>();
-        try {
-            cu.reflectingTicket("description", "Nostrud", null, null);
-        } catch (Exception e) {
-            e.printStackTrace();
+        List<Ticket> data = tr.getTicketList();
+        for (Ticket t : data) {
+            try {
+                cu.reflectingTicket("description", "Nostrud", null, t);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
+        Assert.assertEquals(0, result.size());
+    }
+
+    @Test
+    public void testGetReflectingTicketWithEmptyResult4() {
+        List<Ticket> result = new ArrayList<>();
+        List<Ticket> data = tr.getTicketList();
+        for (Ticket t : data) {
+            try {
+                cu.reflectingTicket("description", "Nostrud", null, null);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        Assert.assertEquals(0, result.size());
     }
 
     @Test
@@ -219,7 +255,7 @@ public class ClassUtilTest {
 
     @Test
     public void testReflectingUserWithMultipleResult1() {
-            List<User> result = new ArrayList<>();
+        List<User> result = new ArrayList<>();
         List<User> data = ur.getUserList();
         for(User u : data){
             try {
@@ -258,10 +294,25 @@ public class ClassUtilTest {
     @Test
     public void testReflectingUserWithEmptyResult3() {
         List<User> result = new ArrayList<>();
+        List<User> data = ur.getUserList();
+        for(User u : data){
+            try {
+                cu.reflectingUser("_id", "1", null, u);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        Assert.assertEquals(0, result.size());
+    }
+
+    @Test
+    public void testReflectingUserWithEmptyResult4() {
+        List<User> result = new ArrayList<>();
         try {
             cu.reflectingUser("_id", "0", null, null);
         } catch (Exception e) {
             e.printStackTrace();
         }
+        Assert.assertEquals(0, result.size());
     }
 }

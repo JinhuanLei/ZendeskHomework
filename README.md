@@ -17,6 +17,8 @@ java -jar (with path)/ZendeskHomework.jar
 
 3. If the type of search term is **boolean**, User need to type **true** or **false** for matching.
 
+4. If the type of search term is **Date** type, In this problem I treat this like a String. So user needs to type exactly the same String to meet the search requirement.
+
 ## User Manual
 **1. Choose Search Options**
 ```

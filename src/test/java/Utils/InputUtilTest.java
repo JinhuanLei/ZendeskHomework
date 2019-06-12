@@ -156,6 +156,20 @@ public class InputUtilTest {
         Assert.assertSame(ModelType.INVALID, input);
     }
 
+    @Test
+    public void testGetModelTypeWithInValidInput2() {
+        ModelType input;
+        InputStream stdin = System.in;
+        try {
+            String data = "\n";
+            System.setIn(new ByteArrayInputStream(data.getBytes()));
+            input = iu.getModelType();
+        } finally {
+            System.setIn(stdin);
+        }
+        Assert.assertSame(ModelType.INVALID, input);
+    }
+
     @Test(timeout = 200)
     public void testGetSearchTermWithValidInput() {
         String input;
@@ -171,7 +185,7 @@ public class InputUtilTest {
     }
 
     @Test(timeout = 200)
-    public void testGetSearchTermWithInValidInput() {
+    public void testGetSearchTermWithInValidInput1() {
         String input;
         InputStream stdin = System.in;
         try {
@@ -184,8 +198,22 @@ public class InputUtilTest {
         Assert.assertEquals("", input);
     }
 
+    @Test(timeout = 200)
+    public void testGetSearchTermWithInValidInput2() {
+        String input;
+        InputStream stdin = System.in;
+        try {
+            String data = "@\n_id\n";
+            System.setIn(new ByteArrayInputStream(data.getBytes()));
+            input = iu.getSearchTerm(ModelType.USER);
+        } finally {
+            System.setIn(stdin);
+        }
+        Assert.assertEquals("_id", input);
+    }
+
     @Test
-    public void testGetSearchValue() {
+    public void testGetSearchValueWithValidInput1() {
         InputStream stdin = System.in;
         String input;
         try {
@@ -198,11 +226,42 @@ public class InputUtilTest {
         Assert.assertNotNull(input);
     }
 
+    @Test
+    public void testGetSearchValueWithInValidInput1() {
+        InputStream stdin = System.in;
+        String input;
+        try {
+            String data = "\n";
+            System.setIn(new ByteArrayInputStream(data.getBytes()));
+            input = iu.getSearchValue();
+        } finally {
+            System.setIn(stdin);
+        }
+        Assert.assertNotNull(input);
+    }
+
     @Test(timeout=100)
-    public void testGetEnterKeyWithValidInput() {
+    public void testGetEnterKeyWithValidInput1() {
         InputStream stdin = System.in;
         try {
             String data = "\n";
+            System.setIn(new ByteArrayInputStream(data.getBytes()));
+            iu.getEnterKey();
+        } finally {
+            System.setIn(stdin);
+        }
+    }
+
+    @Test(timeout=100)
+    public void testGetEnterKeyWithInValidInput1() {
+        InputStream stdin = System.in;
+        try {
+            /*
+            *  input1 : @   Invalid
+            *  input2 : \   Invalid
+            *  input3 : \n  Valid
+            * */
+            String data = "@\n\\\n\n";
             System.setIn(new ByteArrayInputStream(data.getBytes()));
             iu.getEnterKey();
         } finally {
