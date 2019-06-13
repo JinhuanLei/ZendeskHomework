@@ -55,6 +55,9 @@ public class TicketRepository {
      *       List<Ticket> : All the result will be put in a List
      * */
     public List<Ticket> queryThings(List<Ticket> result, String term, String value) throws Exception {
+        if(result == null || term == null || value == null){
+            return result;
+        }
         for (Ticket o : ticketList) {
             cu.reflectingTicket(term, value, result, o);
         }

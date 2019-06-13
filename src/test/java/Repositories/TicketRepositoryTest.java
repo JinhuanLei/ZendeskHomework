@@ -52,6 +52,70 @@ public class TicketRepositoryTest {
     }
 
     @Test
+    public void queryThingsForInteger1() {
+        List<Ticket> list = new ArrayList<>();
+        InputStream stdin = System.in;
+        try {
+            String data = "\n";
+            System.setIn(new ByteArrayInputStream(data.getBytes()));
+            tr.queryThings(list, "submitter_id", "38");
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            System.setIn(stdin);
+        }
+        Assert.assertNotEquals(0, list.size());
+    }
+
+    @Test
+    public void queryThingsForInteger2() {
+        List<Ticket> list = new ArrayList<>();
+        InputStream stdin = System.in;
+        try {
+            String data = "\n";
+            System.setIn(new ByteArrayInputStream(data.getBytes()));
+            tr.queryThings(list, "submitter_id", "");
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            System.setIn(stdin);
+        }
+        Assert.assertEquals(0, list.size());
+    }
+
+    @Test
+    public void queryThingsForBoolean1() {
+        List<Ticket> list = new ArrayList<>();
+        InputStream stdin = System.in;
+        try {
+            String data = "\n";
+            System.setIn(new ByteArrayInputStream(data.getBytes()));
+            tr.queryThings(list, "has_incidents", "false");
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            System.setIn(stdin);
+        }
+        Assert.assertNotEquals(0, list.size());
+    }
+
+    @Test
+    public void queryThingsForBoolean2() {
+        List<Ticket> list = new ArrayList<>();
+        InputStream stdin = System.in;
+        try {
+            String data = "\n";
+            System.setIn(new ByteArrayInputStream(data.getBytes()));
+            tr.queryThings(list, "has_incidents", "");
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            System.setIn(stdin);
+        }
+        Assert.assertEquals(0, list.size());
+    }
+
+    @Test
     public void queryThingsForList1() {
         List<Ticket> list = new ArrayList<>();
         InputStream stdin = System.in;
@@ -82,4 +146,36 @@ public class TicketRepositoryTest {
         }
         Assert.assertEquals(0, list.size());
     }
+
+    @Test
+    public void queryThingsForInvalidInput1() {
+        List<Ticket> list = new ArrayList<>();
+        InputStream stdin = System.in;
+        try {
+            String data = "\n";
+            System.setIn(new ByteArrayInputStream(data.getBytes()));
+            tr.queryThings(list, null, null);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            System.setIn(stdin);
+        }
+    }
+
+    @Test
+    public void queryThingsForInvalidInput2() {
+        List<Ticket> list = new ArrayList<>();
+        InputStream stdin = System.in;
+        try {
+            String data = "\n";
+            System.setIn(new ByteArrayInputStream(data.getBytes()));
+            tr.queryThings(null, "_id", "436bf9b0-1147-4c0a-8439-6f79833bff5b");
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            System.setIn(stdin);
+        }
+        Assert.assertEquals(0, list.size());
+    }
+
 }

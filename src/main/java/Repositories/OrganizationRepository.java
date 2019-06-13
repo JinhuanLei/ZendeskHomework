@@ -54,7 +54,9 @@ public class OrganizationRepository {
     *       List<Organization> : All the result will be put in a List
     * */
     public List<Organization> queryThings(List<Organization> result, String term, String value) throws Exception {
-
+        if(result == null || term == null || value == null){
+            return result;
+        }
         for (Organization o : organizationList) {
             cu.reflectingOrganization(term, value, result, o);
         }

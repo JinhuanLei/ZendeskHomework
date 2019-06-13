@@ -29,7 +29,7 @@ public class QueryController {
      *      2. Handle the Invalid input and response with a invalid input warning.
      * */
     public void queryThings(ModelType modelType, String term, String value) throws Exception {
-        if(modelType == null){
+        if(modelType == null || term == null || value == null){
             return;
         }
         switch (modelType){

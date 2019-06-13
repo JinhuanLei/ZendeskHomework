@@ -51,7 +51,7 @@ public class OrganizationRepositoryTest {
     }
 
     @Test
-    public void testQueryThingsForString() {
+    public void testQueryThingsForString1() {
         List<Organization> list = new ArrayList<>();
         InputStream stdin = System.in;
         try {
@@ -67,13 +67,45 @@ public class OrganizationRepositoryTest {
     }
 
     @Test
-    public void testQueryThingsForList() {
+    public void testQueryThingsForString2() {
         List<Organization> list = new ArrayList<>();
         InputStream stdin = System.in;
         try {
             String data = "\n";
             System.setIn(new ByteArrayInputStream(data.getBytes()));
-            or.queryThings(list, "domain_names", "Jordan");
+            or.queryThings(list, "url", "");
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            System.setIn(stdin);
+        }
+        Assert.assertEquals(0, list.size());
+    }
+
+    @Test
+    public void testQueryThingsForString3() {
+        List<Organization> list = new ArrayList<>();
+        InputStream stdin = System.in;
+        try {
+            String data = "\n";
+            System.setIn(new ByteArrayInputStream(data.getBytes()));
+            or.queryThings(list, "", "http://initech.zendesk.com/api/v2/organizations/105.json");
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            System.setIn(stdin);
+        }
+        Assert.assertEquals(0, list.size());
+    }
+
+    @Test
+    public void testQueryThingsForList1() {
+        List<Organization> list = new ArrayList<>();
+        InputStream stdin = System.in;
+        try {
+            String data = "\n";
+            System.setIn(new ByteArrayInputStream(data.getBytes()));
+            or.queryThings(list, "tags", "Jordan");
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -83,7 +115,23 @@ public class OrganizationRepositoryTest {
     }
 
     @Test
-    public void testQueryThingsForBoolean() {
+    public void testQueryThingsForList2() {
+        List<Organization> list = new ArrayList<>();
+        InputStream stdin = System.in;
+        try {
+            String data = "\n";
+            System.setIn(new ByteArrayInputStream(data.getBytes()));
+            or.queryThings(list, "tags", "");
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            System.setIn(stdin);
+        }
+        Assert.assertEquals(0, list.size());
+    }
+
+    @Test
+    public void testQueryThingsForBoolean1() {
         List<Organization> list = new ArrayList<>();
         InputStream stdin = System.in;
         try {
@@ -96,6 +144,52 @@ public class OrganizationRepositoryTest {
             System.setIn(stdin);
         }
         Assert.assertNotEquals(0, list.size());
+    }
+
+    @Test
+    public void testQueryThingsForBoolean2() {
+        List<Organization> list = new ArrayList<>();
+        InputStream stdin = System.in;
+        try {
+            String data = "\n";
+            System.setIn(new ByteArrayInputStream(data.getBytes()));
+            or.queryThings(list, "shared_tickets", "");
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            System.setIn(stdin);
+        }
+        Assert.assertEquals(0, list.size());
+    }
+
+    @Test
+    public void testQueryThingsForInvalidInput1() {
+        InputStream stdin = System.in;
+        try {
+            String data = "\n";
+            System.setIn(new ByteArrayInputStream(data.getBytes()));
+            or.queryThings(null, "_id", "104");
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            System.setIn(stdin);
+        }
+    }
+
+    @Test
+    public void testQueryThingsForInvalidInput2() {
+        List<Organization> list = new ArrayList<>();
+        InputStream stdin = System.in;
+        try {
+            String data = "\n";
+            System.setIn(new ByteArrayInputStream(data.getBytes()));
+            or.queryThings(list, null, null);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            System.setIn(stdin);
+        }
+        Assert.assertEquals(0, list.size());
     }
 
 }
