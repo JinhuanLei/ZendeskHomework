@@ -1,6 +1,7 @@
 package Repositories;
 
 import Models.Ticket;
+import Models.User;
 import Utils.ClassUtil;
 import Utils.InputUtil;
 import com.google.gson.Gson;
@@ -13,39 +14,35 @@ import java.util.List;
 /*
  *   The TicketRepository can communicating with the Ticket database
  * */
-public class TicketRepository {
+public class TicketRepository extends BaseRepository{
     private List<Ticket> ticketList;
     private InputUtil iu;
     private ClassUtil cu;
+    private static final String RESOURCE_NAME = "tickets.json";
+    private InputStreamReader isr;
     public TicketRepository(){
-        init();
+        loadReasorcesReader();
         iu = new InputUtil();
         cu = new ClassUtil();
     }
 
-    /*
-     *   init the data structures and loading data from .json file to a List<Ticket>
-     * */
-    private void init() {
-        InputStream inputStream;
-        InputStreamReader reader;
-        try {
-            inputStream = this.getClass().getResourceAsStream("tickets.json");
-            reader = new InputStreamReader(inputStream);
-        } catch (Exception e) {
-            System.out.println("File Not Found");
-            return;
-        }
+    @Override
+    protected String getResourceName(){
+        return RESOURCE_NAME;
+    }
+
+    public void loadReasorcesReader() {
+        isr = init();
         Gson gson = new Gson();
-        ticketList = gson.fromJson(reader, new TypeToken<List<Ticket>>() {
+        ticketList = gson.fromJson(isr, new TypeToken<List<Ticket>>() {
         }.getType());
         try {
-            inputStream.close();
-            reader.close();
+            isr.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
     /*
      *   Query the ticket by providing its attributes and value.
      *   Input:
@@ -54,14 +51,14 @@ public class TicketRepository {
      *   Output:
      *       List<Ticket> : All the result will be put in a List
      * */
-    public List<Ticket> queryThings(List<Ticket> result, String term, String value) throws Exception {
+    public List<Ticket> queryThings(List result, String term, String value) throws Exception {
         if(result == null || term == null || value == null){
             return result;
         }
         for (Ticket o : ticketList) {
             cu.reflectingTicket(term, value, result, o);
         }
-        for (Ticket o : result) {
+        for (Ticket o : (List<Ticket>)result) {
             System.out.println(o);
         }
         System.out.println("Total " + result.size() + " Item Found");

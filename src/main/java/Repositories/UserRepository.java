@@ -10,38 +10,41 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.List;
+
 /*
  *   The UserRepository can communicating with the User database
  * */
-public class UserRepository {
+public class UserRepository extends BaseRepository {
     private List<User> userList;
     private InputUtil iu;
     private ClassUtil cu;
-    public UserRepository(){
-        init();
+    private static final String RESOURCE_NAME = "users.json";
+    private InputStreamReader isr;
+
+    public UserRepository() {
+        loadReasorcesReader();
         iu = new InputUtil();
         cu = new ClassUtil();
     }
-    private void init() {
-        InputStream inputStream;
-        InputStreamReader reader;
-        try {
-            inputStream = this.getClass().getResourceAsStream("users.json");
-            reader = new InputStreamReader(inputStream);
-        } catch (Exception e) {
-            System.out.println("File Not Found");
-            return;
-        }
+
+    @Override
+    protected String getResourceName() {
+        return RESOURCE_NAME;
+    }
+
+
+    public void loadReasorcesReader() {
+        isr = init();
         Gson gson = new Gson();
-        userList = gson.fromJson(reader, new TypeToken<List<User>>() {
+        userList = gson.fromJson(isr, new TypeToken<List<User>>() {
         }.getType());
         try {
-            inputStream.close();
-            reader.close();
+            isr.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
     /*
      *   Query the user by providing its attributes and value.
      *   Input:
@@ -50,14 +53,14 @@ public class UserRepository {
      *   Output:
      *       List<User> : All the result will be put in a List
      * */
-    public List<User> queryThings(List<User> result, String term, String value) throws Exception {
-        if(result == null || term == null || value == null){
+    public List<User> queryThings(List result, String term, String value) throws Exception {
+        if (result == null || term == null || value == null) {
             return result;
         }
         for (User o : userList) {
             cu.reflectingUser(term, value, result, o);
         }
-        for (User o : result) {
+        for (User o : (List<User>) result) {
             System.out.println(o);
         }
         System.out.println("Total " + result.size() + " Item Found");

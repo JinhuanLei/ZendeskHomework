@@ -1,6 +1,7 @@
 package Repositories;
 
 import Models.Organization;
+import Models.User;
 import Utils.ClassUtil;
 import Utils.InputUtil;
 import com.google.gson.Gson;
@@ -10,57 +11,58 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.List;
+
 /*
  *   The OrganizationRepository can communicating with the Organization database
  * */
-public class OrganizationRepository {
+public class OrganizationRepository extends BaseRepository {
     private List<Organization> organizationList;
     private InputUtil iu;
     private ClassUtil cu;
+    private InputStreamReader isr;
+    private static final String RESOURCE_NAME = "organizations.json";
+
     public OrganizationRepository() {
-        init();
+        loadReasorcesReader();
         iu = new InputUtil();
         cu = new ClassUtil();
     }
-    /*
-    *   init the data structures and loading data from .json file to a List<Organization>
-    * */
-    private void init() {
-        InputStream inputStream;
-        InputStreamReader reader;
-        try {
-            inputStream = this.getClass().getResourceAsStream("organizations.json");
-            reader = new InputStreamReader(inputStream);
-        } catch (Exception e) {
-            System.out.println("File Not Found");
-            return;
-        }
+
+    @Override
+    protected String getResourceName() {
+        return RESOURCE_NAME;
+    }
+
+    public void loadReasorcesReader() {
+        isr = init();
         Gson gson = new Gson();
-        organizationList = gson.fromJson(reader, new TypeToken<List<Organization>>() {
+        organizationList = gson.fromJson(isr, new TypeToken<List<Organization>>() {
         }.getType());
         try {
-            inputStream.close();
-            reader.close();
+            isr.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
+
     /*
-    *   Query the organization by providing its attributes and value.
-    *   Input:
-    *       term : attributes of organizations
-    *       value : the value of the term we care of organizations
-    *   Output:
-    *       List<Organization> : All the result will be put in a List
-    * */
-    public List<Organization> queryThings(List<Organization> result, String term, String value) throws Exception {
-        if(result == null || term == null || value == null){
+     *   Query the organization by providing its attributes and value.
+     *   Input:
+     *       term : attributes of organizations
+     *       value : the value of the term we care of organizations
+     *   Output:
+     *       List<Organization> : All the result will be put in a List
+     * */
+
+    public List<Organization> queryThings(List result, String term, String value) throws Exception {
+        if (result == null || term == null || value == null) {
             return result;
         }
         for (Organization o : organizationList) {
             cu.reflectingOrganization(term, value, result, o);
         }
-        for (Organization o : result) {
+        for (Organization o : (List<Organization>) result) {
             System.out.println(o);
         }
         System.out.println("Total " + result.size() + " Item Found");
@@ -69,8 +71,8 @@ public class OrganizationRepository {
     }
 
     /*
-    *  Test Method
-    * */
+     *  Test Method
+     * */
     public static void main(String args[]) {
         OrganizationRepository o = new OrganizationRepository();
         System.out.println(o.organizationList.get(0));
