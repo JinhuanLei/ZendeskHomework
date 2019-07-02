@@ -26,7 +26,7 @@ public class TicketRepositoryTest {
         try {
             String data = "\n";
             System.setIn(new ByteArrayInputStream(data.getBytes()));
-            tr.queryThings(list, "_id", "df1a642a-e704-4556-af79-98a63b59401d");
+            tr.queryTickets(list, "_id", "df1a642a-e704-4556-af79-98a63b59401d");
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -36,13 +36,13 @@ public class TicketRepositoryTest {
     }
 
     @Test
-    public void queryThingsForString2() {
+    public void queryTicketsForString2() {
         List<Ticket> list = new ArrayList<>();
         InputStream stdin = System.in;
         try {
             String data = "\n";
             System.setIn(new ByteArrayInputStream(data.getBytes()));
-            tr.queryThings(list, "description", "");
+            tr.queryTickets(list, "description", "");
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -52,13 +52,13 @@ public class TicketRepositoryTest {
     }
 
     @Test
-    public void queryThingsForInteger1() {
+    public void queryTicketsForInteger1() {
         List<Ticket> list = new ArrayList<>();
         InputStream stdin = System.in;
         try {
             String data = "\n";
             System.setIn(new ByteArrayInputStream(data.getBytes()));
-            tr.queryThings(list, "submitter_id", "38");
+            tr.queryTickets(list, "submitter_id", "38");
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -68,13 +68,13 @@ public class TicketRepositoryTest {
     }
 
     @Test
-    public void queryThingsForInteger2() {
+    public void queryTicketsForInteger2() {
         List<Ticket> list = new ArrayList<>();
         InputStream stdin = System.in;
         try {
             String data = "\n";
             System.setIn(new ByteArrayInputStream(data.getBytes()));
-            tr.queryThings(list, "submitter_id", "");
+            tr.queryTickets(list, "submitter_id", "");
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -84,13 +84,13 @@ public class TicketRepositoryTest {
     }
 
     @Test
-    public void queryThingsForBoolean1() {
+    public void queryTicketsForBoolean1() {
         List<Ticket> list = new ArrayList<>();
         InputStream stdin = System.in;
         try {
             String data = "\n";
             System.setIn(new ByteArrayInputStream(data.getBytes()));
-            tr.queryThings(list, "has_incidents", "false");
+            tr.queryTickets(list, "has_incidents", "false");
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -100,13 +100,13 @@ public class TicketRepositoryTest {
     }
 
     @Test
-    public void queryThingsForBoolean2() {
+    public void queryTicketsForBoolean2() {
         List<Ticket> list = new ArrayList<>();
         InputStream stdin = System.in;
         try {
             String data = "\n";
             System.setIn(new ByteArrayInputStream(data.getBytes()));
-            tr.queryThings(list, "has_incidents", "");
+            tr.queryTickets(list, "has_incidents", "");
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -116,13 +116,13 @@ public class TicketRepositoryTest {
     }
 
     @Test
-    public void queryThingsForList1() {
+    public void queryTicketsForList1() {
         List<Ticket> list = new ArrayList<>();
         InputStream stdin = System.in;
         try {
             String data = "\n";
             System.setIn(new ByteArrayInputStream(data.getBytes()));
-            tr.queryThings(list, "tags", "South Dakota");
+            tr.queryTickets(list, "tags", "South Dakota");
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -132,13 +132,13 @@ public class TicketRepositoryTest {
     }
 
     @Test
-    public void queryThingsForList2() {
+    public void queryTicketsForList2() {
         List<Ticket> list = new ArrayList<>();
         InputStream stdin = System.in;
         try {
             String data = "\n";
             System.setIn(new ByteArrayInputStream(data.getBytes()));
-            tr.queryThings(list, "tags", "");
+            tr.queryTickets(list, "tags", "");
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -148,13 +148,13 @@ public class TicketRepositoryTest {
     }
 
     @Test
-    public void queryThingsForInvalidInput1() {
+    public void queryTicketsForInvalidInput1() {
         List<Ticket> list = new ArrayList<>();
         InputStream stdin = System.in;
         try {
             String data = "\n";
             System.setIn(new ByteArrayInputStream(data.getBytes()));
-            tr.queryThings(list, null, null);
+            tr.queryTickets(list, null, null);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -163,13 +163,13 @@ public class TicketRepositoryTest {
     }
 
     @Test
-    public void queryThingsForInvalidInput2() {
+    public void queryTicketsForInvalidInput2() {
         List<Ticket> list = new ArrayList<>();
         InputStream stdin = System.in;
         try {
             String data = "\n";
             System.setIn(new ByteArrayInputStream(data.getBytes()));
-            tr.queryThings(null, "_id", "436bf9b0-1147-4c0a-8439-6f79833bff5b");
+            tr.queryTickets(null, "_id", "436bf9b0-1147-4c0a-8439-6f79833bff5b");
         } catch (Exception e) {
             e.printStackTrace();
         } finally {

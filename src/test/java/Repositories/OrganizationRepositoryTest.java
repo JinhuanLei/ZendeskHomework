@@ -25,7 +25,7 @@ public class OrganizationRepositoryTest {
         try {
             String data = "\n";
             System.setIn(new ByteArrayInputStream(data.getBytes()));
-            or.queryThings(list, "_id", "101");
+            or.queryOrganizations(list, "_id", "101");
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -41,7 +41,7 @@ public class OrganizationRepositoryTest {
         try {
             String data = "\n";
             System.setIn(new ByteArrayInputStream(data.getBytes()));
-            or.queryThings(list, "_id", "");
+            or.queryOrganizations(list, "_id", "");
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -57,7 +57,7 @@ public class OrganizationRepositoryTest {
         try {
             String data = "\n";
             System.setIn(new ByteArrayInputStream(data.getBytes()));
-            or.queryThings(list, "url", "http://initech.zendesk.com/api/v2/organizations/105.json");
+            or.queryOrganizations(list, "url", "http://initech.zendesk.com/api/v2/organizations/105.json");
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -73,7 +73,7 @@ public class OrganizationRepositoryTest {
         try {
             String data = "\n";
             System.setIn(new ByteArrayInputStream(data.getBytes()));
-            or.queryThings(list, "url", "");
+            or.queryOrganizations(list, "url", "");
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -89,7 +89,7 @@ public class OrganizationRepositoryTest {
         try {
             String data = "\n";
             System.setIn(new ByteArrayInputStream(data.getBytes()));
-            or.queryThings(list, "", "http://initech.zendesk.com/api/v2/organizations/105.json");
+            or.queryOrganizations(list, "", "http://initech.zendesk.com/api/v2/organizations/105.json");
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -105,7 +105,7 @@ public class OrganizationRepositoryTest {
         try {
             String data = "\n";
             System.setIn(new ByteArrayInputStream(data.getBytes()));
-            or.queryThings(list, "tags", "Jordan");
+            or.queryOrganizations(list, "tags", "Jordan");
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -121,7 +121,7 @@ public class OrganizationRepositoryTest {
         try {
             String data = "\n";
             System.setIn(new ByteArrayInputStream(data.getBytes()));
-            or.queryThings(list, "tags", "");
+            or.queryOrganizations(list, "tags", "");
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -137,7 +137,7 @@ public class OrganizationRepositoryTest {
         try {
             String data = "\n";
             System.setIn(new ByteArrayInputStream(data.getBytes()));
-            or.queryThings(list, "shared_tickets", "false");
+            or.queryOrganizations(list, "shared_tickets", "false");
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -153,7 +153,7 @@ public class OrganizationRepositoryTest {
         try {
             String data = "\n";
             System.setIn(new ByteArrayInputStream(data.getBytes()));
-            or.queryThings(list, "shared_tickets", "");
+            or.queryOrganizations(list, "shared_tickets", "");
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -168,7 +168,7 @@ public class OrganizationRepositoryTest {
         try {
             String data = "\n";
             System.setIn(new ByteArrayInputStream(data.getBytes()));
-            or.queryThings(null, "_id", "104");
+            or.queryOrganizations(null, "_id", "104");
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -183,7 +183,7 @@ public class OrganizationRepositoryTest {
         try {
             String data = "\n";
             System.setIn(new ByteArrayInputStream(data.getBytes()));
-            or.queryThings(list, null, null);
+            or.queryOrganizations(list, null, null);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {

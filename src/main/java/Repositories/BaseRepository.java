@@ -8,10 +8,6 @@ public abstract class BaseRepository<R> implements Repository {
 
     protected abstract String getResourceName();
 
-    @Override
-    public List queryThings(List result, String term, String value) throws Exception {
-        return null;
-    }
 
     @Override
     public InputStreamReader init() {

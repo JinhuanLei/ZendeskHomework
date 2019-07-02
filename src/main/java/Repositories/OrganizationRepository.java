@@ -1,14 +1,11 @@
 package Repositories;
 
 import Models.Organization;
-import Models.User;
 import Utils.ClassUtil;
 import Utils.InputUtil;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.List;
 
@@ -28,11 +25,17 @@ public class OrganizationRepository extends BaseRepository {
         cu = new ClassUtil();
     }
 
+    /*
+     *  Method that override the resource name and method
+     * */
     @Override
     protected String getResourceName() {
         return RESOURCE_NAME;
     }
 
+    /*
+     *  Method that Load Gson Apis to parse the json to the Organization objects
+     * */
     public void loadReasorcesReader() {
         isr = init();
         Gson gson = new Gson();
@@ -54,8 +57,7 @@ public class OrganizationRepository extends BaseRepository {
      *   Output:
      *       List<Organization> : All the result will be put in a List
      * */
-
-    public List<Organization> queryThings(List result, String term, String value) throws Exception {
+    public List<Organization> queryOrganizations(List result, String term, String value) throws Exception {
         if (result == null || term == null || value == null) {
             return result;
         }

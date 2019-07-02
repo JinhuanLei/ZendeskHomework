@@ -26,7 +26,7 @@ public class UserRepositoryTest {
         try {
             String data = "\n";
             System.setIn(new ByteArrayInputStream(data.getBytes()));
-            ur.queryThings(list, "_id", "1");
+            ur.queryUser(list, "_id", "1");
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -42,7 +42,7 @@ public class UserRepositoryTest {
         try {
             String data = "\n";
             System.setIn(new ByteArrayInputStream(data.getBytes()));
-            ur.queryThings(list, "_id", "");
+            ur.queryUser(list, "_id", "");
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -58,7 +58,7 @@ public class UserRepositoryTest {
         try {
             String data = "\n";
             System.setIn(new ByteArrayInputStream(data.getBytes()));
-            ur.queryThings(list, "timezone", "Sri Lanka");
+            ur.queryUser(list, "timezone", "Sri Lanka");
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -74,7 +74,7 @@ public class UserRepositoryTest {
         try {
             String data = "\n";
             System.setIn(new ByteArrayInputStream(data.getBytes()));
-            ur.queryThings(list, "timezone", "");
+            ur.queryUser(list, "timezone", "");
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -90,7 +90,7 @@ public class UserRepositoryTest {
         try {
             String data = "\n";
             System.setIn(new ByteArrayInputStream(data.getBytes()));
-            ur.queryThings(list, "active", "true");
+            ur.queryUser(list, "active", "true");
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -106,7 +106,7 @@ public class UserRepositoryTest {
         try {
             String data = "\n";
             System.setIn(new ByteArrayInputStream(data.getBytes()));
-            ur.queryThings(list, "active", "");
+            ur.queryUser(list, "active", "");
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -122,7 +122,7 @@ public class UserRepositoryTest {
         try {
             String data = "\n";
             System.setIn(new ByteArrayInputStream(data.getBytes()));
-            ur.queryThings(list, "tags", "Springville");
+            ur.queryUser(list, "tags", "Springville");
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -138,7 +138,7 @@ public class UserRepositoryTest {
         try {
             String data = "\n";
             System.setIn(new ByteArrayInputStream(data.getBytes()));
-            ur.queryThings(list, "tags", "");
+            ur.queryUser(list, "tags", "");
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -153,7 +153,7 @@ public class UserRepositoryTest {
         try {
             String data = "\n";
             System.setIn(new ByteArrayInputStream(data.getBytes()));
-            ur.queryThings(null, "_id", "5");
+            ur.queryUser(null, "_id", "5");
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -168,7 +168,7 @@ public class UserRepositoryTest {
         try {
             String data = "\n";
             System.setIn(new ByteArrayInputStream(data.getBytes()));
-            ur.queryThings(list, null, null);
+            ur.queryUser(list, null, null);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
