@@ -16,7 +16,7 @@ import java.util.List;
  *       2. choose model type.
  *   This class will also check the correctness of keyboard input;
  * */
-public class QueryController {
+public class QueryController implements Controller {
     private QueryService qs;
     private InputUtil iu;
     public QueryController(){
@@ -28,6 +28,7 @@ public class QueryController {
      *      1. According to model options user chooses to perform search functions for corresponding fields
      *      2. Handle the Invalid input and response with a invalid input warning.
      * */
+    @Override
     public void queryThings(ModelType modelType, String term, String value) throws Exception {
         if(modelType == null || term == null || value == null){
             return;

@@ -12,24 +12,29 @@ import java.util.List;
 /*
  *   The QueryService handles the query requests from Controller and responsible for communicating with repositories
  * */
-public class QueryService {
+public class QueryService implements Service {
     private OrganizationRepository qr;
     private TicketRepository tr;
     private UserRepository ur;
-    public QueryService(){
-        qr  = new OrganizationRepository();
+
+    public QueryService() {
+        qr = new OrganizationRepository();
         tr = new TicketRepository();
         ur = new UserRepository();
     }
+
+    @Override
     public void queryOrganization(List<Organization> result, String term, String value) throws Exception {
-        qr.queryThings(result, term, value);
+        qr.queryOrganizations(result, term, value);
     }
 
+    @Override
     public void queryTicket(List<Ticket> result, String term, String value) throws Exception {
-        tr.queryThings(result, term, value);
+        tr.queryTickets(result, term, value);
     }
 
+    @Override
     public void queryUser(List<User> result, String term, String value) throws Exception {
-        ur.queryThings(result, term, value);
+        ur.queryUser(result, term, value);
     }
 }
