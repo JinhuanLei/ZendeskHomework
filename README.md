@@ -1,4 +1,4 @@
-﻿# ZenDesk Homework
+﻿# Zendesk Homework
 ## Run the Application
 The computer need to install Java 8 environment to run this application. If not, the user can follow the instructions of the link below to install the Java 8 Environment.
 ```
